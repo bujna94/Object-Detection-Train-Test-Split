@@ -66,10 +66,10 @@ def write_data(training, testing, datadir, train_output, test_output):
     print ('Writing -', training.shape[0], '- Train data images at -', train_output)
     for name in training['filename']:
         try:
-            # Moving xmls
-            rd_path = os.path.join(datadir, name+'.xml')
+            # Moving txts
+            rd_path = os.path.join(datadir, name+'.txt')
 
-            wr_path = os.path.join(train_output, name+'.xml')
+            wr_path = os.path.join(train_output, name+'.txt')
             shutil.move(rd_path, wr_path)
 
             # Moving images
@@ -78,16 +78,16 @@ def write_data(training, testing, datadir, train_output, test_output):
             wr_path = os.path.join(train_output, name+'.'+FLAGS.image_ext)
             shutil.move(rd_path, wr_path)
         except:
-            print('Could not find {}'.format(name+'.xml'))
+            print('Could not find {}'.format(name+'.txt'))
 
     # Test Data
     print ('Writing -', testing.shape[0], '- Test data images at -', test_output)
     for name in testing['filename']:
         try:
-            # Moving xmls
-            rd_path = os.path.join(datadir, name+'.xml')
+            # Moving txts
+            rd_path = os.path.join(datadir, name+'.txt')
 
-            wr_path = os.path.join(test_output, name+'.xml')
+            wr_path = os.path.join(test_output, name+'.txt')
             shutil.move(rd_path, wr_path)
 
             # Moving images
@@ -96,7 +96,7 @@ def write_data(training, testing, datadir, train_output, test_output):
             wr_path = os.path.join(test_output, name+'.'+FLAGS.image_ext)
             shutil.move(rd_path, wr_path)
         except:
-            print('Could not find {}'.format(name+'.xml'))
+            print('Could not find {}'.format(name+'.txt'))
 
 def main():
     check_dir(FLAGS.train_output)
